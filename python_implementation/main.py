@@ -4,9 +4,8 @@ import numpy as np
 import hashlib
 import random
 
-i = 0
 
-# 2048-bit prime, for standard security
+# 2048-bit prime, for standard security against DLog attacks
 p_hex = """
 FFFFFFFFFFFFFFFFC90FDAA22168C234C4C6628B80DC1CD1
 29024E088A67CC74020BBEA63B139B22514A08798E3404DD
@@ -16,9 +15,8 @@ E485B576625E7EC6F44C42E9A63A3620FFFFFFFFFFFFFFFF
 
 p = int(p_hex, 16)
 
-while i < 500:
-  Z.append(i)
-  i += 1
+g = 2
+q = (p-1) // 2
 
 # Generate CRS string from trusted third party, assuming TTP exists
 def generate_crs():
