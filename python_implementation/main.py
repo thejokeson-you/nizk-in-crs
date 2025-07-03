@@ -18,6 +18,10 @@ p = int(p_hex, 16)
 g = 2
 q = (p-1) // 2
 
+# Use Fiat-Shamir
+def fiat_shamir_hash():
+
+
 # Generate CRS string from trusted third party, assuming TTP exists
 def generate_crs():
 
