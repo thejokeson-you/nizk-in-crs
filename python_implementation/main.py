@@ -4,6 +4,11 @@ import numpy as np
 import hashlib
 import random
 
+# Used for setup stage, generate (p, g) group which represents CRS string
+class Group:
+    def __init__(self, p, g):
+    
+
 
 # 2048-bit prime, for standard security against DLog attacks
 p_hex = """
