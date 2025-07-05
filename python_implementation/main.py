@@ -50,3 +50,9 @@ def prove(group, x):
 
 
 def verify(group, y, proof):
+  g = group.g
+  p = group.p
+  q = group.q
+  (t, s) = proof # Consists of (commitment, response)
+
+  c = fiat_shamir_hash(g, y, t) % q # Retrieve challenge
