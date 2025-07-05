@@ -18,9 +18,10 @@ p = int(p_hex, 16)
 g = 2
 q = (p-1) // 2
 
-# Use Fiat-Shamir
-def fiat_shamir_hash():
-
+# Use Fiat-Shamir to hash given elements
+def fiat_shamir_hash(*elements):
+    data = b''.join(int(e).to_bytes((e.bit_length() + 7) // 8, 'big') for e in elements)
+    return int.from_bytes(hashlib.sha256(data).digest(), 'big')
 
 # Generate CRS string from trusted third party, assuming TTP exists
 def generate_crs():
