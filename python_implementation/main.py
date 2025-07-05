@@ -40,5 +40,13 @@ def prove(group, x):
   q = group.q
   y = group.exp(g, x)  # y = g^x; P wants to prove x such that this is true
 
+  r = random.randrange(1, q)
+  t = group.exp(g, r)  # Commitment
+
+  c = fiat_shamir_hash(g, y, t) % q  # Challenge
+  s = (r + c * x) % q  # Response
+
+  return y, (t, s)
+
 
 def verify(group, y, proof):
