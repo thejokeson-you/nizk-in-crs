@@ -7,7 +7,9 @@ import random
 # Used for setup stage, generate (p, g) group which represents CRS string
 class Group:
     def __init__(self, p, g):
-    
+      self.p = p  # Large prime
+      self.g = g  # Generator g
+      self.q = (p - 1) // 2  # order of the subgroup
 
 
 # 2048-bit prime, for standard security against DLog attacks
@@ -21,7 +23,7 @@ E485B576625E7EC6F44C42E9A63A3620FFFFFFFFFFFFFFFF
 p = int(p_hex, 16)
 
 g = 2
-q = (p-1) // 2
+# q = (p-1) // 2
 
 # Use Fiat-Shamir to hash given elements
 def fiat_shamir_hash(*elements):
