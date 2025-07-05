@@ -56,3 +56,8 @@ def verify(group, y, proof):
   (t, s) = proof # Consists of (commitment, response)
 
   c = fiat_shamir_hash(g, y, t) % q # Retrieve challenge
+  
+  left = group.exp(g, s)  # Get y = g^s, where s is the given solution, and P wants to prove that it knows x, so s == x ideally
+  right = (t * group.exp(y, c)) % p  # Do t * y^c and compare to given proof   
+
+  return left == right
