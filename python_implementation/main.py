@@ -10,6 +10,11 @@ class Group:
       self.p = p  # Large prime
       self.g = g  # Generator g
       self.q = (p - 1) // 2  # order of the subgroup
+    
+    # Exponential operation method base^exponent (for convenience)
+    def exp(self, base, exponent):
+        return pow(base, exponent, self.p)
+
 
 
 # 2048-bit prime, for standard security against DLog attacks
@@ -21,7 +26,6 @@ E485B576625E7EC6F44C42E9A63A3620FFFFFFFFFFFFFFFF
 """.replace("\n", "").replace(" ", "")
 
 p = int(p_hex, 16)
-
 g = 2
 # q = (p-1) // 2
 
