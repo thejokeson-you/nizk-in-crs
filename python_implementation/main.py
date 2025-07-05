@@ -23,14 +23,8 @@ def fiat_shamir_hash(*elements):
     data = b''.join(int(e).to_bytes((e.bit_length() + 7) // 8, 'big') for e in elements)
     return int.from_bytes(hashlib.sha256(data).digest(), 'big')
 
-# Generate CRS string from trusted third party, assuming TTP exists
-def generate_crs():
+
+def prove(group, x):
 
 
-def setup():
-
-
-def prove():
-
-
-def verify():
+def verify(group, y, proof):
