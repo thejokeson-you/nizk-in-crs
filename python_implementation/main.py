@@ -16,7 +16,6 @@ class Group:
         return pow(base, exponent, self.p)
 
 
-
 # 2048-bit prime, for standard security against DLog attacks
 p_hex = """
 FFFFFFFFFFFFFFFFC90FDAA22168C234C4C6628B80DC1CD1
@@ -36,6 +35,10 @@ def fiat_shamir_hash(*elements):
 
 
 def prove(group, x):
+  g = group.g
+  p = group.p
+  q = group.q
+  y = group.exp(g, x)  # y = g^x; P wants to prove x such that this is true
 
 
 def verify(group, y, proof):
