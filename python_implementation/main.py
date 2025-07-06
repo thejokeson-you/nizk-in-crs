@@ -64,3 +64,11 @@ def verify(group, y, proof):
   right = (t * group.exp(y, c)) % p  # Do t * y^c and compare to given proof   
 
   return left == right
+
+
+group = Group(p, g)
+x = random.randrange(1, group.q)
+y, proof = prove(group, x)
+
+assert verify(group, y, proof), "Verification failed!"
+print("Verification passed.")
