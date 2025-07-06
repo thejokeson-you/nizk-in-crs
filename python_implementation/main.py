@@ -13,7 +13,7 @@ class Group:
     
     # Exponential operation method base^exponent (for convenience)
     def exp(self, base, exponent):
-        return pow(base, exponent, self.p)
+      return pow(base, exponent, self.p)
 
 
 # 2048-bit prime, for standard security against DLog attacks. Included for demonstration purposes
@@ -33,8 +33,8 @@ g = 2
 
 # Use Fiat-Shamir to hash given elements
 def fiat_shamir_hash(*elements):
-    data = b''.join(int(e).to_bytes((e.bit_length() + 7) // 8, 'big') for e in elements)
-    return int.from_bytes(hashlib.sha256(data).digest(), 'big')
+  data = b''.join(int(e).to_bytes((e.bit_length() + 7) // 8, 'big') for e in elements)
+  return int.from_bytes(hashlib.sha256(data).digest(), 'big')
 
 
 def prove(group, x):
@@ -66,9 +66,10 @@ def verify(group, y, proof):
   return left == right
 
 
-group = Group(p, g)
-x = random.randrange(1, group.q)
-y, proof = prove(group, x)
+if __name__ == "__main__":
+  group = Group(p, g)
+  x = random.randrange(1, group.q)
+  y, proof = prove(group, x)
 
-assert verify(group, y, proof), "Verification failed!"
-print("Verification passed.")
+  assert verify(group, y, proof), "Verification failed!"
+  print("Verification passed.")
